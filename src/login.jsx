@@ -11,7 +11,7 @@ function LoginForm() {
       const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
       const token = localStorage.getItem('accessToken');
 
-      const response = await fetch(`${API_BASE_URL}/api/v1/gallery/`, {
+      const response = await fetch(`${API_BASE_URL}/api/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ function LoginForm() {
         const errorData = await response.json();
         throw new Error(errorData.detail || 'Invalid email or password.');
       }
-      console.log(response+ "get");
+    //   console.log(response+ "get");
 
       const data = await response.json();
       if (!data.access || !data.refresh) {
